@@ -21,3 +21,8 @@ class Cell:
         """Draws the cell on the screen"""
         pygame.draw.rect(self.screen, self.color,
                          [self.x, self.y, self.width, self.height], self.line_width)
+
+    """test function to change color"""
+
+    def change_color(self):
+        self.color = (255, 0, 0)

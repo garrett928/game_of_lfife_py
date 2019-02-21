@@ -14,18 +14,27 @@ def run_game():
     screen = pygame.display.set_mode((settings.screen_width, settings.screen_height))
     pygame.display.set_caption(settings.screen_title)
 
+    # create and initialize the grid of cells
+    # grid is a 2d list of columns, or x pos
+    # with each x pos being a list of cells with that x pos
+    # cell_grid = [ [list_of_cells_at_x1], [list_of_cells_at_x2], [list_of_cells_at_x3]]
     cell_grid = []
-    y_list = []
+
     # init cells
-    num_cols = settings.screen_width / settings.cell_width
-    num_rows = settings.screen_height / settings.cell_height
-    # create a vertical row
+    # use the screen and cell width and height to determine the number of cells on screen
+    for x in range(0, settings.screen_width // settings.cell_width):
+        x_list = []
+        for y in range(0, settings.screen_height // settings.cell_height):
+            cell = Cell(screen, x * settings.cell_width, y * settings.cell_height)
+            x_list.append(cell)
+        cell_grid.append(x_list)
 
-    for y in range(0, 60):
-        cell = Cell(screen, 0, y * settings.cell_height)
-        y_list.append(cell)
+    cell_grid[0][0].change_color()
+    cell_grid[0][settings.screen_height // settings.cell_height - 1].change_color()
+    cell_grid[settings.screen_width // settings.cell_width - 1][
+        settings.screen_height // settings.cell_height - 1].change_color()
+    cell_grid[settings.screen_width // settings.cell_width - 1][0].change_color()
 
-    cell_grid.append(y_list)
 
     # start the game's main loop
     while True:
@@ -33,7 +42,6 @@ def run_game():
         gf.check_events()
         # update the game's screen
         gf.upadte_screen(screen, settings, cell_grid)
-
 
 
 run_game()

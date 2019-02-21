@@ -18,8 +18,8 @@ def upadte_screen(screen: object, settings: object, cell_grid: object):
     # draw the screens background
     screen.fill(settings.bg_color)
     # redraw the cells
-    for row in cell_grid:
-        for cell in row:
+    for col in cell_grid:
+        for cell in col:
             cell.draw()
     # make the most recently drawn screen visible
     pygame.display.flip()
