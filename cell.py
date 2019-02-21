@@ -15,7 +15,7 @@ class Cell:
         self.width = settings.cell_width
         self.height = settings.cell_height
         self.color = (0, 0, 0)
-        self.line_width = 0
+        self.line_width = 1
 
     def draw(self):
         """Draws the cell on the screen"""
