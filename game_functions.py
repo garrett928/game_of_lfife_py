@@ -45,11 +45,12 @@ def update_screen(screen: object, settings: object, cell_grid: Cell):
 
     if game_states.get_mouse_dragging():
         mouse_pos = pygame.mouse.get_pos()
-        cell_at_mouse_pos = (mouse_pos[0] // settings.cell_width,
-                             mouse_pos[1] // settings.cell_height)
-        if cell_at_mouse_pos not in game_states.cell_dragging_list:
-            cell_grid[cell_at_mouse_pos[0]][cell_at_mouse_pos[1]].change_on_drag()
-            game_states.cell_dragging_list.append(cell_at_mouse_pos)
+        if mouse_pos[0] % settings.cell_width > 4 or mouse_pos[1] % settings.cell_height > 4:
+            cell_at_mouse_pos = (mouse_pos[0] // settings.cell_width,
+                                 mouse_pos[1] // settings.cell_height)
+            if cell_at_mouse_pos not in game_states.cell_dragging_list:
+                cell_grid[cell_at_mouse_pos[0]][cell_at_mouse_pos[1]].change_on_drag()
+                game_states.cell_dragging_list.append(cell_at_mouse_pos)
 
     # redraw the cells
     for col in cell_grid:
