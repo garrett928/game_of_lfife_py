@@ -9,5 +9,5 @@ class Settings:
         self.screen_height = 600
         self.cell_width = 10
         self.cell_height = 10
-        self.bg_color = (200, 200, 200)
+        self.bg_color = (255, 255, 255)
         self.screen_title = "Game of Life"
