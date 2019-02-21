@@ -29,19 +29,12 @@ def run_game():
             x_list.append(cell)
         cell_grid.append(x_list)
 
-    cell_grid[0][0].change_color()
-    cell_grid[0][settings.screen_height // settings.cell_height - 1].change_color()
-    cell_grid[settings.screen_width // settings.cell_width - 1][
-        settings.screen_height // settings.cell_height - 1].change_color()
-    cell_grid[settings.screen_width // settings.cell_width - 1][0].change_color()
-
-
     # start the game's main loop
     while True:
         # check pygame's events
         gf.check_events()
         # update the game's screen
-        gf.upadte_screen(screen, settings, cell_grid)
+        gf.update_screen(screen, settings, cell_grid)
 
 
 run_game()
