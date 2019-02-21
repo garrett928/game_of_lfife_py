@@ -1,4 +1,3 @@
-import sys
 import pygame
 from settings import Settings
 from cell import Cell
