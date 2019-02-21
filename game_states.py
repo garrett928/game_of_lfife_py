@@ -1,6 +1,7 @@
 is_dragging = False
 cell_dragging_list = []
 
+
 def get_mouse_dragging():
     return is_dragging
 
