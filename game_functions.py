@@ -1,10 +1,12 @@
 import sys
 import pygame
 from settings import Settings
+import game_states as game_states
 
 # global var
 mouse_drag = False
 settings = Settings()
+
 
 def check_events():
     """Respond to keypresses and mouse events"""
@@ -18,15 +20,15 @@ def check_events():
 
         # if the mouse button is pushed than start dragging
         if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_drag = True
+            game_states.set_mouse_dragging(True)
             print("mouse down")
         # if the mouse button is released than stop dragging
         if event.type == pygame.MOUSEBUTTONUP:
             print("mouse up")
-            mouse_drag = False
+            game_states.set_mouse_dragging(False)
 
     # if the mouse is being dragged than
-    if mouse_drag:
+    if game_states.get_mouse_dragging():
         mouse_pos = pygame.mouse.get_pos()
         cell_at_mouse_pos = (mouse_pos[0] // settings.cell_width,
                              mouse_pos[1] // settings.cell_height)
