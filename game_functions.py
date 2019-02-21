@@ -1,5 +1,7 @@
 import sys
 import pygame
+
+from cell import Cell
 from settings import Settings
 import game_states as game_states
 
@@ -32,14 +34,23 @@ def check_events():
         mouse_pos = pygame.mouse.get_pos()
         cell_at_mouse_pos = (mouse_pos[0] // settings.cell_width,
                              mouse_pos[1] // settings.cell_height)
-        print("mouse pos: " + str(cell_at_mouse_pos))
+        # print("mouse pos: " + str(cell_at_mouse_pos))
 
 
-def update_screen(screen: object, settings: object, cell_grid: object):
+def update_screen(screen: object, settings: object, cell_grid: Cell):
     """Update images on the screen and 'flip' to a new screen"""
 
     # draw the screens background
     screen.fill(settings.bg_color)
+
+    if game_states.get_mouse_dragging():
+        mouse_pos = pygame.mouse.get_pos()
+        cell_at_mouse_pos = (mouse_pos[0] // settings.cell_width,
+                             mouse_pos[1] // settings.cell_height)
+        if cell_at_mouse_pos not in game_states.cell_dragging_list:
+            cell_grid[cell_at_mouse_pos[0]][cell_at_mouse_pos[1]].change_on_drag()
+            game_states.cell_dragging_list.append(cell_at_mouse_pos)
+
     # redraw the cells
     for col in cell_grid:
         for cell in col:
