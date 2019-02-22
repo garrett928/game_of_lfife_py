@@ -1,5 +1,5 @@
 import pygame
-from settings import Settings
+import settings
 import game_states as game_states
 
 
@@ -9,10 +9,9 @@ class Cell:
     def __init__(self, screen, x, y):
         """Initialize the cell with an x and y position"""
 
-        # import game settings
-        settings = Settings()
         # keep track of cell's states
         self.alive = False
+        self.alive_next = False
         # grab screen where cell will be placed
         self.screen = screen
         # x and y are passed when cell is created
@@ -22,7 +21,7 @@ class Cell:
         self.width = settings.cell_width
         self.height = settings.cell_height
         # colors are represented with tuples
-        self.dead_color = (0, 0, 0)
+        self.dead_color = (50, 50, 50)
         self.alive_color = (255, 255, 20)
         # a line width of one fills the shape
         self.dead_line_width = 1
@@ -41,10 +40,19 @@ class Cell:
                              [self.x, self.y, self.width, self.height], self.alive_line_width)
 
     """change the state of the cell when the mouse is drug over it"""
-
     def change_on_drag(self):
         # if the cell is dead, make it alive
         if not self.alive:
             self.alive = True
         else:
             self.alive = False
+
+    """kill the cell is it's alive"""
+
+    def die(self):
+        if self.alive:
+            self.alive = False
+
+    def birth(self):
+        if not self.alive:
+            self.alive = True

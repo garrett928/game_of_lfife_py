@@ -1,4 +1,7 @@
 is_dragging = False
+clr_btn_pressed = False
+start_btn_pressed = False
+is_running = False
 cell_dragging_list = []
 
 
