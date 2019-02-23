@@ -5,6 +5,10 @@ import game_functions as gf
 from button import Button
 
 
+# The can defiantly be written in a better and easier to follow way.
+# I've never really used pygame and don't know how to organize the game logic.
+# Also, I need to add some more comments in some places
+
 def run_game():
 
     # Initialize game and create a screen object
