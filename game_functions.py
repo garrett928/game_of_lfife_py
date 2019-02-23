@@ -87,6 +87,7 @@ def update_screen(screen: object, cell_grid: Cell, screen_buttons):
                 cell_grid[cell_at_mouse_pos[0]][cell_at_mouse_pos[1]].change_on_drag()
                 gs.cell_dragging_list.append(cell_at_mouse_pos)
 
+
     x = 0
     # if the game is running
     if gs.is_running:
