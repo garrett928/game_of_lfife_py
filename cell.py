@@ -58,11 +58,9 @@ class Cell:
             self.alive = True
 
     """tell the cell if it should be alive or dead next 'round'"""
-
     def alive_next(self, alive):
         self.alive_next = alive
 
     """return whether or not the cell is alive"""
-
     def is_alive(self):
         return self.is_alive
